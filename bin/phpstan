@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+readonly PROJECT_DIRECTORY=$(realpath $(dirname $(realpath $0))/..)
+
+set -e
+
+if [ $(which docker || false) ]; then
+    docker run \
+        --rm \
+        -v ${PROJECT_DIRECTORY}:/var/phpstan:ro \
+        -w /var/phpstan \
+        php:7.3.6-cli-alpine3.10 \
+        /var/phpstan/bin/phpstan
+else
+    ./vendor/bin/phpstan analyse --ansi -c phpstan.neon
+fi
