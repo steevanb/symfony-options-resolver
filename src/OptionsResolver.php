@@ -29,6 +29,7 @@ class OptionsResolver extends SymfonyOptionsResolver
     protected function setAllowedTypesAndValues(string $name, array $allowedTypes, array $allowedValues): self
     {
         $this
+            ->setDefined($name)
             ->setAllowedTypes($name, $allowedTypes)
             ->setAllowedValues($name, $allowedValues);
 

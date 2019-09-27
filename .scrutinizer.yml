@@ -1,5 +1,6 @@
 build:
     environment:
+        # lib require with PHP 7.1 but PHPUnit require 7.2 and Scrutinizer use dev environment
         php: 7.2
 checks:
     php:
