@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver as SymfonyOptionsResolver;
 
 class OptionsResolver extends SymfonyOptionsResolver
 {
-    public function configureOption(string $name, array $allowedTypes, array $allowedValues, $default): self
+    public function configureOption(string $name, array $allowedTypes, $default, array $allowedValues = null): self
     {
         $this
             ->setAllowedTypesAndValues($name, $allowedTypes, $allowedValues)
@@ -17,7 +17,7 @@ class OptionsResolver extends SymfonyOptionsResolver
         return $this;
     }
 
-    public function configureRequiredOption(string $name, array $allowedTypes, array $allowedValues): self
+    public function configureRequiredOption(string $name, array $allowedTypes, array $allowedValues = null): self
     {
         $this
             ->setAllowedTypesAndValues($name, $allowedTypes, $allowedValues)
@@ -26,12 +26,14 @@ class OptionsResolver extends SymfonyOptionsResolver
         return $this;
     }
 
-    protected function setAllowedTypesAndValues(string $name, array $allowedTypes, array $allowedValues): self
+    protected function setAllowedTypesAndValues(string $name, array $allowedTypes, array $allowedValues = null): self
     {
         $this
             ->setDefined($name)
-            ->setAllowedTypes($name, $allowedTypes)
-            ->setAllowedValues($name, $allowedValues);
+            ->setAllowedTypes($name, $allowedTypes);
+        if (is_array($allowedValues)) {
+            $this->setAllowedValues($name, $allowedValues);
+        }
 
         return $this;
     }
