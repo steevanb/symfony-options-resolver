@@ -46,6 +46,6 @@ final class OptionsResolverConfigureOptionTest extends TestCase
     private function createOptionsResolver(string $defaultValue = null): OptionsResolver
     {
         return (new OptionsResolver())
-            ->configureOption('foo', ['string'], ['bar'], $defaultValue);
+            ->configureOption('foo', ['string'], $defaultValue, ['bar']);
     }
 }
