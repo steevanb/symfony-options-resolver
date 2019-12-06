@@ -36,7 +36,7 @@ jobs:
 
     phpstan:
         docker:
-            - image: php:7.3.6-cli-alpine3.10
+            - image: php:7.2-cli-alpine3.10
         steps:
             - checkout
             - restore_cache:
@@ -48,7 +48,7 @@ jobs:
 
     phpunit:
         docker:
-            - image: php:7.3.6-cli-alpine3.10
+            - image: php:7.2-fpm-alpine3.10
         steps:
             - checkout
             - restore_cache:

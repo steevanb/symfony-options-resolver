@@ -8,6 +8,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver as SymfonyOptionsResolver;
 
 class OptionsResolver extends SymfonyOptionsResolver
 {
+    /** @var bool */
+    protected $allowUnknownKeys = false;
+
     public function configureOption(string $name, array $allowedTypes, $default, array $allowedValues = null): self
     {
         $this
@@ -24,6 +27,22 @@ class OptionsResolver extends SymfonyOptionsResolver
             ->setRequired($name);
 
         return $this;
+    }
+
+    public function setAllowUnknownKeys(bool $allow): self
+    {
+        $this->allowUnknownKeys = $allow;
+
+        return $this;
+    }
+
+    public function resolve(array $options = [])
+    {
+        if ($this->allowUnknownKeys) {
+            $this->setDefined(array_keys($options));
+        }
+
+        return parent::resolve($options);
     }
 
     protected function setAllowedTypesAndValues(string $name, array $allowedTypes, array $allowedValues = null): self

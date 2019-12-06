@@ -9,7 +9,7 @@ if [ $(which docker || false) ]; then
         --rm \
         -v ${PROJECT_DIRECTORY}:/var/phpstan:ro \
         -w /var/phpstan \
-        php:7.3.6-cli-alpine3.10 \
+        php:7.2-cli-alpine3.10 \
         /var/phpstan/bin/phpstan
 else
     ./vendor/bin/phpstan analyse --ansi -c phpstan.neon
