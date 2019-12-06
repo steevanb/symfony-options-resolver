@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace steevanb\SymfonyOptionsResolver\Tests;
+namespace steevanb\SymfonyOptionsResolver\Tests\OptionsResolver;
 
 use PHPUnit\Framework\TestCase;
 use steevanb\SymfonyOptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 
-final class OptionsResolverConfigureOptionTest extends TestCase
+final class ConfigureOptionTest extends TestCase
 {
     public function testValid(): void
     {
